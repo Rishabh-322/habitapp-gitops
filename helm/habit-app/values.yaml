@@ -2,7 +2,7 @@ replicaCount: 2
 
 image:
   repository: rishabh322/habitapp
-  tag: "3-bf98e91"
+  tag: "manual-v1"
   pullPolicy: IfNotPresent
 
 service:
