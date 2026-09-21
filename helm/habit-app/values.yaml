@@ -1,0 +1,35 @@
+replicaCount: 2
+
+image:
+  repository: rishabh322/habitapp
+  tag: "manual-v1"
+  pullPolicy: IfNotPresent
+
+service:
+  type: LoadBalancer
+  port: 80
+  targetPort: 8080
+
+config:
+  springProfile: "default"
+
+secret:
+  demoFlag: "enabled"
+
+resources:
+  requests:
+    cpu: "100m"
+    memory: "128Mi"
+  limits:
+    cpu: "500m"
+    memory: "512Mi"
+
+readinessProbe:
+  path: /api/habits
+  initialDelaySeconds: 10
+  periodSeconds: 10
+
+livenessProbe:
+  path: /api/habits
+  initialDelaySeconds: 20
+  periodSeconds: 20
